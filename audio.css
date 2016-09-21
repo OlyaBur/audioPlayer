@@ -1,0 +1,80 @@
+body {
+    background-image: url("../img/43-fon-dlya-sayta.png");
+}
+.opl-box {
+    padding: 10px;
+}
+.opl-header {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+}
+.opl-header img {
+    height: 50%;
+    width: 100%;
+}
+.opl-controls {
+    background-color: black;
+    height: 45px;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+.opl-controls audio {
+    margin-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    min-width: 300px;
+    display: inline-block;
+}
+.opl-controls a {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    border-color: black;
+    background-repeat: no-repeat;
+}
+.opl-controls .opl-prev {
+    padding-left: 60 %;
+    background-image: url(../img/prev.png);
+}
+.opl-controls .opl-next {
+    background-image: url(../img/next.png);
+}
+.opl-playlist {
+    background-color: dimgrey;
+    height: 220px;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 0;
+    padding-top: 1px;
+}
+.opl-playlist .active {
+    background-color: whitesmoke;
+    opacity: 0.5;
+    margin-left: 0;
+    padding-left: 0;
+}
+.opl-playlist ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    font-size: 23px;
+    font-family: 'Amatic SC', cursive;
+}
+.opl-playlist a {
+    text-decoration: none;
+    color: inherit;
+}
+.opl-play{
+    background-image: url(../img/pause.png);
+    height:50px;
+    width: 50px;
+}
+.visible{
+    background-image: url(../img/pause.png);
+}
+.unvisible{
+    background-image: url(../img/play.png);
+}
