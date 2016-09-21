@@ -2,29 +2,32 @@
     var defaults = {
         volume: 1,
         backImg: 'img/background.jpg'
+
     },
-        options, aplayer, currentLI, image;
+        options, player, currentLI, image;
 
     var methods = {
         init: function (params) {
             options = $.extend({}, defaults, params);
             return this.each(function () {
 
-                aplayer = document.createElement("audio");
-                $(aplayer)
-                    .attr('controls', 'controls')
+
+
+                player = document.createElement("audio");
+                $(player)
                     .on('ended', methods.next);
                 image = $('<img>');
 
                 var btnPrev = $('<a>').addClass('opl-prev').click(methods.prev);
                 var btnNext = $('<a>').addClass('opl-next').click(methods.next);
+                var btnPlay = $('<a>').addClass('opl-play').click(methods.play);
                 var wrapper = $('<div></div>').addClass('opl-box');
                 var panel_header = $('<div></div>').addClass('opl-header');
                 var panel_controls = $('<div></div>').addClass('opl-controls');
                 var panel_playlist = $('<div></div>').addClass('opl-playlist');
 
                 panel_header.append(image);
-                panel_controls.append(aplayer).append(btnPrev).append(btnNext);
+                panel_controls.append(player).append(btnPrev).append(btnPlay).append(btnNext);
                 $(this).wrap(wrapper).wrap(panel_playlist);
                 wrapper = $(this).parent().parent(); // DOM changed, refresh wrapper reference
                 wrapper.prepend(panel_controls);
@@ -59,18 +62,39 @@
             methods.play(prevLI);
         },
         play: function (li) {
+
+            if (player.paused) {
+                player.play();
+                $('.opl-play').addClass('visible');
+                $('.opl-play').removeClass('unvisible');
+                currentLI.removeClass('active');
+                currentLI = li;
+                currentLI.addClass('active');
+                player.src = currentLI.children('a').attr('href');
+
+            } else {
+                player.pause();
+                $('.opl-play').addClass('unvisible');
+                //currentLI.removeClass('active');
+
+                currentLI = li;
+                currentLI.addClass('active');
+                player.src = currentLI.children('a').attr('href');
+
+            }
             currentLI.removeClass('active');
             currentLI = li;
             currentLI.addClass('active');
-            aplayer.src = currentLI.children('a').attr('href');
-            aplayer.play();
+            player.src = currentLI.children('a').attr('href');
+
+
 
         },
         setVolume: function (volume) {
-            aplayer.volume = volume;
+            player.volume = volume;
         },
         getVolume: function () {
-            return aplayer.volume;
+            return player.volume;
         },
         setBackground: function (backImg) {
             image.attr('src', backImg);
